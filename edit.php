@@ -89,18 +89,18 @@ if (!$visitor) {
                 
                 <!-- Name field - pre-filled with current data -->
                 <label class="w3-text-blue"><b>Name</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="text" name="name" value="<?php echo htmlspecialchars($visitor['name']); ?>" required>
+                <input class="w3-input w3-border w3-margin-bottom" type="text" name="name" value="<?php echo htmlspecialchars($visitor['NAME']); ?>" required>
                 
                 <!-- Contact field - pre-filled -->
                 <label class="w3-text-blue"><b>Contact</b></label>
-                <input class="w3-input w3-border w3-margin-bottom" type="text" name="contact" value="<?php echo htmlspecialchars($visitor['contact']); ?>">
+                <input class="w3-input w3-border w3-margin-bottom" type="text" name="contact" value="<?php echo htmlspecialchars($visitor['CONTACT']); ?>">
                 
                 <!-- Purpose field - pre-filled -->
                 <label class="w3-text-blue"><b>Purpose</b></label>
-                <textarea class="w3-input w3-border w3-margin-bottom" name="purpose" rows="3"><?php echo htmlspecialchars($visitor['purpose']); ?></textarea>
+                <textarea class="w3-input w3-border w3-margin-bottom" name="purpose" rows="3"><?php echo htmlspecialchars($visitor['PURPOSE']); ?></textarea>
                 
                 <!-- Show original date (read-only) -->
-                <p class="w3-text-gray"><b>Date Logged:</b> <?php echo date('Y-m-d H:i:s', strtotime($visitor['date_logged'])); ?></p>
+                <p class="w3-text-gray"><b>Date Logged:</b> <?php echo date('Y-m-d H:i:s', strtotime($visitor['DATE_LOGGED'])); ?></p>
                 
                 <!-- Submit and Cancel buttons -->
                 <button class="w3-button w3-blue w3-margin-bottom w3-margin-right" type="submit">Update Visitor</button>

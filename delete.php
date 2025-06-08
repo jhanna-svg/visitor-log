@@ -74,11 +74,11 @@ if (isset($_POST['confirm_delete'])) {
             <!-- Show visitor details before deletion -->
             <div class="w3-container w3-border w3-margin-bottom">
                 <h4>Visitor Details:</h4>
-                <p><b>ID:</b> <?php echo $visitor['id']; ?></p>
-                <p><b>Name:</b> <?php echo htmlspecialchars($visitor['name']); ?></p>
-                <p><b>Contact:</b> <?php echo htmlspecialchars($visitor['contact']); ?></p>
-                <p><b>Purpose:</b> <?php echo htmlspecialchars($visitor['purpose']); ?></p>
-                <p><b>Date Logged:</b> <?php echo date('Y-m-d H:i:s', strtotime($visitor['date_logged'])); ?></p>
+                <p><b>ID:</b> <?php echo $visitor['GUEST_ID']; ?></p>
+                <p><b>Name:</b> <?php echo htmlspecialchars($visitor['NAME']); ?></p>
+                <p><b>Contact:</b> <?php echo htmlspecialchars($visitor['CONTACT']); ?></p>
+                <p><b>Purpose:</b> <?php echo htmlspecialchars($visitor['PURPOSE']); ?></p>
+                <p><b>Date Logged:</b> <?php echo date('Y-m-d H:i:s', strtotime($visitor['DATE_LOGGED'])); ?></p>
             </div>
             
             <!-- Confirmation buttons -->
