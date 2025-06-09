@@ -43,4 +43,18 @@ function deleteVisitor($guest_id) {
     return $stmt->execute();
 }
 
+function searchVisitors($search) {
+    global $conn;
+    $search = "%$search%";
+    $stmt = $conn->prepare("SELECT * FROM guests
+                           WHERE NAME LIKE ? 
+                           OR CONTACT LIKE ? 
+                           OR PURPOSE LIKE ? 
+                           ORDER BY DATE_LOGGED DESC");
+    $stmt->bind_param("sss", $search, $search, $search);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    return $result->fetch_all(MYSQLI_ASSOC);
+}
+
 ?>

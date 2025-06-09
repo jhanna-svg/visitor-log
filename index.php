@@ -6,6 +6,9 @@ require_once 'functions.php';
 $success = isset($_GET['success']) ? $_GET['success'] : null;
 $error = isset($_GET['error']) ? $_GET['error'] : null;
 
+// Get search query if exists
+$search = isset($_GET['search']) ? $_GET['search'] : '';
+
 // Handle form submission for adding new visitor
 if (isset($_POST['action']) && $_POST['action'] == 'add') {
     // Get form data
@@ -21,8 +24,8 @@ if (isset($_POST['action']) && $_POST['action'] == 'add') {
     }
 }
 
-// Get all visitors for display
-$visitors = getAllVisitors();
+// Get all visitors for display (modified to include search)
+$visitors = empty($search) ? getAllVisitors() : searchVisitors($search);
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +40,7 @@ $visitors = getAllVisitors();
 <body class="w3-light-grey">
 
 <!-- Page Header -->
-<header class="w3-container w3-blue w3-center w3-padding-32">
+<header class="w3-container w3-blue w3-center">
     <h1 class="w3-margin w3-jumbo">Visitor Log System</h1>
 </header>
 
@@ -92,7 +95,24 @@ $visitors = getAllVisitors();
         <header class="w3-container w3-blue">
             <h3>Visitor List</h3>
         </header>
-        <div class="w3-container">
+        <div class="w3-container w3-margin">
+            <!-- Add search form -->
+            <form method="GET" class="w3-container w3-margin-bottom">
+                <div class="w3-row-padding">
+                    <div class="w3-threequarter">
+                        <input class="w3-input w3-border" type="text" name="search" 
+                               placeholder="Search by name, contact or purpose..." 
+                               value="<?= htmlspecialchars($search) ?>">
+                    </div>
+                    <div class="w3-quarter">
+                        <button class="w3-button w3-blue" type="submit">Search</button>
+                        <?php if (!empty($search)): ?>
+                            <a href="index.php" class="w3-button w3-grey">Clear</a>
+                        <?php endif; ?>
+                    </div>
+                </div>
+            </form>
+
             <?php if (empty($visitors)): ?>
                 <!-- Show message if no visitors -->
                 <p class="w3-center w3-padding">No visitors found.</p>
